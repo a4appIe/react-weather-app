@@ -28,15 +28,19 @@ const Main = () => {
   useEffect(() => {
     const delayTimer = setTimeout(() => {
       fetchDataFromApi();
-    }, 1000); // Debounce time (adjust as needed)
+    }, 1500); // Debounce time (adjust as needed)
 
     return () => clearTimeout(delayTimer);
   }, [city]);
-
+  console.log(data);
   const backgroundImageUrl = useMemo(() => {
     if (data?.weather && data.weather[0].main === "Rain") {
       return "../../src/assets/rainy.jpg";
     } else if (data?.weather && data.weather[0].main === "Mist") {
+      return "../../src/assets/mist.jpg";
+    } else if (data?.weather && data.weather[0].main === "Clear") {
+        return "../../src/assets/mist.jpg";
+      } else if (data?.weather && data.weather[0].main === "Clouds") {
       return "../../src/assets/mist.jpg";
     } else {
       return "../../src/assets/sunny.jpg";
